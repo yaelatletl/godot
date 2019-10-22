@@ -39,6 +39,8 @@ public:
 		MATH_SIN,
 		MATH_COS,
 		MATH_TAN,
+		MATH_ERF,
+		MATH_INVERF,
 		MATH_SINH,
 		MATH_COSH,
 		MATH_TANH,

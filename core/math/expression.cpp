@@ -42,6 +42,8 @@ const char *Expression::func_name[Expression::FUNC_MAX] = {
 	"sin",
 	"cos",
 	"tan",
+	"erf",
+	"inverf",
 	"sinh",
 	"cosh",
 	"tanh",
@@ -136,6 +138,8 @@ int Expression::get_func_argument_count(BuiltinFunc p_func) {
 		case MATH_SIN:
 		case MATH_COS:
 		case MATH_TAN:
+		case MATH_ERF:
+		case MATH_INVERF:
 		case MATH_SINH:
 		case MATH_COSH:
 		case MATH_TANH:
@@ -233,6 +237,16 @@ void Expression::exec_func(BuiltinFunc p_func, const Variant **p_inputs, Variant
 
 			VALIDATE_ARG_NUM(0);
 			*r_return = Math::tan((double)*p_inputs[0]);
+		} break;
+		case MATH_ERF: {
+
+			VALIDATE_ARG_NUM(0);
+			*r_return = Math::erf((double)*p_inputs[0]);
+		} break;
+		case MATH_INVERF: {
+
+			VALIDATE_ARG_NUM(0);
+			*r_return = Math::inverf((double)*p_inputs[0]);
 		} break;
 		case MATH_SINH: {
 

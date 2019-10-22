@@ -48,6 +48,8 @@ const char *GDScriptFunctions::get_func_name(Function p_func) {
 		"sin",
 		"cos",
 		"tan",
+		"erf",
+		"inverf",
 		"sinh",
 		"cosh",
 		"tanh",
@@ -192,6 +194,16 @@ void GDScriptFunctions::call(Function p_func, const Variant **p_args, int p_arg_
 			VALIDATE_ARG_COUNT(1);
 			VALIDATE_ARG_NUM(0);
 			r_ret = Math::tan((double)*p_args[0]);
+		} break;
+		case MATH_ERF: {
+			VALIDATE_ARG_COUNT(1);
+			VALIDATE_ARG_NUM(0);
+			r_ret = Math::erf((double)*p_args[0]);
+		} break;
+		case MATH_INVERF: {
+			VALIDATE_ARG_COUNT(1);
+			VALIDATE_ARG_NUM(0);
+			r_ret = Math::inverf((double)*p_args[0]);
 		} break;
 		case MATH_SINH: {
 			VALIDATE_ARG_COUNT(1);
@@ -1488,6 +1500,8 @@ bool GDScriptFunctions::is_deterministic(Function p_func) {
 		case MATH_SIN:
 		case MATH_COS:
 		case MATH_TAN:
+		case MATH_ERF:
+		case MATH_INVERF:
 		case MATH_SINH:
 		case MATH_COSH:
 		case MATH_TANH:
@@ -1568,6 +1582,16 @@ MethodInfo GDScriptFunctions::get_info(Function p_func) {
 		} break;
 		case MATH_TAN: {
 			MethodInfo mi("tan", PropertyInfo(Variant::REAL, "s"));
+			mi.return_val.type = Variant::REAL;
+			return mi;
+		} break;
+		case MATH_ERF: {
+			MethodInfo mi("erf", PropertyInfo(Variant::REAL, "s"));
+			mi.return_val.type = Variant::REAL;
+			return mi;
+		} break;
+		case MATH_INVERF: {
+			MethodInfo mi("inverf", PropertyInfo(Variant::REAL, "s"));
 			mi.return_val.type = Variant::REAL;
 			return mi;
 		} break;

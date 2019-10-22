@@ -52,6 +52,34 @@ public:
 	static _ALWAYS_INLINE_ double sin(double p_x) { return ::sin(p_x); }
 	static _ALWAYS_INLINE_ float sin(float p_x) { return ::sinf(p_x); }
 
+	static _ALWAYS_INLINE_ double erf(double p_x) { return ::erf(p_x); }
+	static _ALWAYS_INLINE_ float erf(float p_x) { return ::erf(p_x); }
+
+	static _ALWAYS_INLINE_ double inverf(double p_x) {
+		float tt1, tt2, lnx, sgn;
+       sgn = (p_x < 0) ? -1.0f : 1.0f;
+
+       p_x = (1 - p_x)*(1 + p_x);
+       lnx = ::logf(p_x);
+
+       tt1 = 2/(Math_PI*0.147) + 0.5f * lnx;
+       tt2 = 1/(0.147) * lnx;
+
+       return (sgn*::sqrtf(-tt1 + ::sqrtf(tt1*tt1 - tt2)));
+			 }
+	static _ALWAYS_INLINE_ float inverf(float p_x) {
+		float tt1, tt2, lnx, sgn;
+		 sgn = (p_x < 0) ? -1.0f : 1.0f;
+
+		 p_x = (1 - p_x)*(1 + p_x);
+		 lnx = ::logf(p_x);
+
+		 tt1 = 2/(Math_PI*0.147) + 0.5f * lnx;
+		 tt2 = 1/(0.147) * lnx;
+
+		 return (sgn*::sqrtf(-tt1 + ::sqrtf(tt1*tt1 - tt2)));
+	  }
+
 	static _ALWAYS_INLINE_ double cos(double p_x) { return ::cos(p_x); }
 	static _ALWAYS_INLINE_ float cos(float p_x) { return ::cosf(p_x); }
 
