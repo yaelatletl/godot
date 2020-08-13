@@ -1111,7 +1111,7 @@ private:
 			float y_mult;
 
 			uint32_t store_ambient_texture;
-			uint pad[3];
+			uint32_t pad[3];
 		};
 
 		SdfgiIntegrateShaderRD integrate;
